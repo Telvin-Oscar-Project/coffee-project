@@ -51,6 +51,9 @@ var coffeeList = document.querySelector('#coffees');
 var submitButton = document.querySelector('#submit');
 var roastSelection = document.querySelector('#roast-selection');
 var searchFieldResponse = document.querySelector("#search-field");
+
+
+
 coffeeList.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
@@ -67,3 +70,6 @@ function searchCallBack() {
 
     })
 }
+//Add functionality to search through the coffees by name,
+// and display only the coffees that match the provided search term
+// (You will need to add an input field to the existing form for this)
