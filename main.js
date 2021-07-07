@@ -50,7 +50,20 @@ var coffees = [
 var coffeeList = document.querySelector('#coffees');
 var submitButton = document.querySelector('#submit');
 var roastSelection = document.querySelector('#roast-selection');
-
+var searchFieldResponse = document.querySelector("#search-field");
 coffeeList.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
+searchFieldResponse.addEventListener('keydown', )
+function searchCallBack() {
+    coffeeList.forEach(function (result) {
+
+        var whatUserIsSearchingFor = searchFieldResponse.value
+
+        if (result.toLowerCase().includes(whatUserIsSearchingFor.toLowerCase())) {
+            console.log("Here is a potential result...")
+            console.log(result)
+        }
+
+    })
+}
