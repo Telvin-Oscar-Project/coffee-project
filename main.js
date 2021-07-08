@@ -11,7 +11,7 @@ function renderCoffee(coffee) {
 
 function renderCoffees(coffees) {
     var html = '';
-    for(var i = coffees.length - 1; i >= 0; i--) {
+    for(var i = 0; i < coffees.length; i++) {
         html += renderCoffee(coffees[i]);
     }
     return html;
@@ -20,9 +20,10 @@ function renderCoffees(coffees) {
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
     var selectedRoast = roastSelection.value;
+    var searchInput = searchFieldResponse.value;
     var filteredCoffees = [];
     coffees.forEach(function(coffee) {
-        if (coffee.roast === selectedRoast) {
+        if (coffee.roast === selectedRoast && coffee.name.toLowerCase().includes(searchInput)) {
             filteredCoffees.push(coffee);
         }
     });
@@ -57,19 +58,22 @@ var searchFieldResponse = document.querySelector("#search-field");
 coffeeList.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
-searchFieldResponse.addEventListener('keydown', )
-function searchCallBack() {
-    coffeeList.forEach(function (result) {
+searchFieldResponse.addEventListener('keyup', updateCoffees)
+roastSelection.addEventListener('change',updateCoffees);
 
-        var whatUserIsSearchingFor = searchFieldResponse.value
-
-        if (result.toLowerCase().includes(whatUserIsSearchingFor.toLowerCase())) {
-            console.log("Here is a potential result...")
-            console.log(result)
-        }
-
-    })
-}
-//Add functionality to search through the coffees by name,
-// and display only the coffees that match the provided search term
+// function listener() {
+//     coffeeList.forEach(function (coffee) {
+//
+//         //get user input
+//         var whatUserIsSearchingFor = searchFieldResponse.value;
+//
+//         if (coffee.toLowerCase().includes(whatUserIsSearchingFor.toLowerCase())) {
+//             // display only the coffees that match the provided search term
+//             document.write(coffee);
+//             // console.log(coffee)
+//         }
+//     })
+// }
+// search through the coffees by name,
 // (You will need to add an input field to the existing form for this)
+
